@@ -27,6 +27,7 @@ public class Occupant {
 		setName("");
 		setEmail("");
 		setGender("");
+		setTel("");
 	}
 	
 	
