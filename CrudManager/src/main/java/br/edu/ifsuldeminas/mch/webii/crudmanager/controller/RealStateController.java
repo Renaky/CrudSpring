@@ -27,7 +27,7 @@ public class RealStateController {
 		
 		List<RealState> rs = realStateRepository.findAll();
 		model.addAttribute("imoveis", rs);
-		return "imoveis";
+		return "listar_imoveis";
 	}
 	
 	@GetMapping("/imoveis/form")

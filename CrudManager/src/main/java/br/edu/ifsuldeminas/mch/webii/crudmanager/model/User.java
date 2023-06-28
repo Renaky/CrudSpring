@@ -5,18 +5,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="usuarios")
 public class User {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	private String name;
-	private String email;
-	private String gender;
+		@Id
+		@GeneratedValue(strategy = GenerationType.AUTO)
+		private Integer id;
+		
+		@NotBlank(message = "Nome não pode ser vazio")
+		private String name;
+		
+		@NotBlank(message = "Email não pode ser vazio")
+		@Email(message = "Endereço de Email Invalido")
+		private String email;
+		
+		@NotBlank(message = "Gênero não pode ser vazio")
+		private String gender;
+		
 	
+		
 	public User() {};
 	
 	public User(Integer id)
@@ -58,6 +69,5 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	
+
 }
