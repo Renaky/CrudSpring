@@ -11,8 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.edu.ifsuldeminas.mch.webii.crudmanager.dao.AddressRepository;
+import br.edu.ifsuldeminas.mch.webii.crudmanager.dao.OccupantRepository;
 import br.edu.ifsuldeminas.mch.webii.crudmanager.dao.RealStateRepository;
+import br.edu.ifsuldeminas.mch.webii.crudmanager.dao.UserRepository;
+import br.edu.ifsuldeminas.mch.webii.crudmanager.model.Address;
+import br.edu.ifsuldeminas.mch.webii.crudmanager.model.Occupant;
 import br.edu.ifsuldeminas.mch.webii.crudmanager.model.RealState;
+import br.edu.ifsuldeminas.mch.webii.crudmanager.model.User;
 
 
 @Controller
@@ -20,6 +26,15 @@ public class RealStateController {
 	
 	@Autowired
 	private RealStateRepository realStateRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private OccupantRepository occupantRepository;
+
+	@Autowired
+	private AddressRepository addressRepository;
 	
 	@GetMapping("/imoveis")
 	public String imoveis (Model model) {
@@ -75,6 +90,21 @@ public class RealStateController {
 		
 		
 	}
+	
+	@GetMapping("/imovel-form")
+	public String showImovelForm(Model model) {
+	    List<User> users = userRepository.findAll();
+	    List<Occupant> occupants = occupantRepository.findAll();
+	    List<Address> addresses = addressRepository.findAll();
+
+	    model.addAttribute("users", users);
+	    model.addAttribute("occupants", occupants);
+	    model.addAttribute("addresses", addresses);
+
+	    return "imovel_form";
+	}
+
+	
 	
 }
 	

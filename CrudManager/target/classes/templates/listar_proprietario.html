@@ -9,7 +9,7 @@
 			
 		 <link rel="stylesheet" 
 		       href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		       <title>Home</title>
+		       <title>Owner</title>
 		
 		<script src="https://code.jquery.com/jquery-3.5.1.js"
 		        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -65,17 +65,34 @@
       </div>
     </div>
   </nav>
-	<div class="container-fluid my-2 text-center">
-		<h1>Pagina Inicial</h1>
-		    <a th:href="@{/listar_proprietario}" class="btn btn-primary btn-sm p-5 m-3" >Listar Proprietários</a>
-		    <a th:href="@{/users/form}" class="btn btn-info btn-sm p-5 m-3">Adicionar Proprietário]</a>
-		    
-			<a th:href="@{/imoveis}" class="btn btn-primary btn-sm p-5 m-3" >Listar Imoveis</a>			
-			<a th:href="@{/imoveis/form}" class="btn btn-info btn-sm p-5 m-3">Adicionar Imoveis</a>
-			
-			<a th:href="@{/occupants}" class="btn btn-primary btn-sm p-5 m-3" >Listar Inquilinos</a>			
-			<a th:href="@{/occupants/form}" class="btn btn-info btn-sm p-5 m-3">Adicionar Inquilino</a>
-			
-	</div>
-</body>
+		<div class="container my-2">
+			<h1>Proprietario</h1>
+			<table class="table table-striped table-responsive-md">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Gênero</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${users}">
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.email}"></td>						
+						<td th:text="${user.gender}"></td>
+						<td>
+							<a th:href="@{/users/{id}(id=${user.id})}"
+							class="btn btn-primary btn-sm mb-3">Alterar</a>
+							
+							<a th:href="@{/users/delete/{id}(id=${user.id})}"
+							class="btn btn-danger btn-sm mb-3">Deletar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/users/form}" 
+			   class="btn btn-primary btn-sm mb-3">Adicionar Proprietario</a>
+		</div>
+	</body>
 </html>

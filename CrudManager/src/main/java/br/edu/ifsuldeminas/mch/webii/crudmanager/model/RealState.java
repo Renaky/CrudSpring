@@ -24,7 +24,7 @@ public class RealState {
 	
 	@NotNull(message = "Metragem não pode ser vazia")
 	@Min(value = 0, message = "Metragem deve ser maior ou igual a 0")
-	private Double size;
+	private double size;
 	
 	@NotBlank(message = "Cor não pode ser vazia")
 	private String color;

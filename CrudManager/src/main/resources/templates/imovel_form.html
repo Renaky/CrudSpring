@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<div th:replace="cabecalho :: head"></div>
+
+	<title>Crud Manager - Imoveis</title>
+</head>
+
+<body>
+	<div class="container my-2">
+		<h2>Imovel</h2>
+		<form action="#" th:action="@{/imoveis/new}" th:object="${imoveis}" method="POST">
+			<input th:field="*{id}" type="hidden" id="id">
+			
+			<p>Tamanho M²<p>
+			<span th:if="${#fields.hasErrors('size')}" th:errors="*{size}" class="text-danger"></span>
+			<input type="text" th:field="*{size}" placeholder="Tamanho M²" class="form-control mb-4 col-4"> 
+			
+			<p>Cor<p>
+			<span th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="text-danger"></span>
+			<input type="text" th:field="*{color}" placeholder="Cor" class="form-control mb-4 col-4">
+
+			<!-- User Select -->
+			<select name="owner">
+			    <option value="">Selecione Proprietário</option>
+			    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+			</select>
+			
+			<!-- Occupant Select -->
+			<select name="inquilinos">
+			    <option value="">Selecione Inquilino</option>
+			    <option th:each="inquilino : ${inquilinos}" th:value="${inquilinos.id}" th:text="${inquilinos.name}"></option>
+			</select>
+
+			<!-- Address Select -->
+			<select name="address">
+			    <option value="">Selecione o Endereço</option>
+			    <option th:each="address : ${addresses}" th:value="${address.id}" th:text="${address.place}"></option>
+			</select>
+			
+			
+			
+			<button type="submit" class="btn btn-info col-2">Salvar</button>
+		</form>
+		<hr>
+		<a th:href="@{/imoveis}">Imoveis</a>
+	</div>
+</body>
+</html>

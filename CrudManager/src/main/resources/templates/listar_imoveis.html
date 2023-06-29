@@ -77,7 +77,8 @@
                         <th>Inquilino</th>
                         <th>Proprietario</th>
                         <th>Endereço</th>
-</tr>
+                        <th>Ações</th>
+					</tr>
                 </thead>
                 <tbody>
                     <tr th:each="imovel : ${imoveis}">
@@ -85,7 +86,7 @@
                         <td th:text="${imovel.color}"></td>
                         <td th:text="${imovel.occupant.name}"></td>
                         <td th:text="${imovel.owner.name}"></td>
-                         <td th:text="${imovel.address.place}"></td>
+                         <td th:text="${imovel.address.place  + ', n: ' + imovel.address.number + ', CEP: ' + imovel.address.zipCode}"></td>
                         <td>
                             <a th:href="@{/imoveis/{id}(id=${imovel.id})}"
                             class="btn btn-primary btn-sm mb-3">Alterar</a>

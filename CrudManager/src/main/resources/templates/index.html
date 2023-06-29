@@ -37,16 +37,16 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Usuário</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Proprietario</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
-              <li><a class="dropdown-item" th:href="@{/users}">Listar Proprietários</a></li>
+              <li><a class="dropdown-item" th:href="@{/listar_proprietario}">Listar Proprietários</a></li>
               <li><a class="dropdown-item" th:href="@{/users/form}">Adicionar Proprietário</a></li>
             </ul>
           </li>
           
           
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Cidades</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Imoveis</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
               <li><a class="dropdown-item" th:href="@{/imoveis}">Listar Imoveis</a></li>
               <li><a class="dropdown-item" th:href="@{/imoveis/form}">Adicionar Imoveis</a></li>
@@ -54,7 +54,7 @@
           </li>
           
            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Veiculos</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Inquilinos</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
               <li><a class="dropdown-item" th:href="@{/occupants}">Listar Inquilinos</a></li>
               <li><a class="dropdown-item" th:href="@{/occupants/form}">Adicionar Inquilino</a></li>
@@ -67,7 +67,7 @@
   </nav>
 	<div class="container-fluid my-2 text-center">
 		<h1>Pagina Inicial</h1>
-		    <a th:href="@{/users}" class="btn btn-primary btn-sm p-5 m-3" >Listar Proprietários</a>
+		    <a th:href="@{/listar_proprietario}" class="btn btn-primary btn-sm p-5 m-3" >Listar Proprietários</a>
 		    <a th:href="@{/users/form}" class="btn btn-info btn-sm p-5 m-3">Adicionar Proprietário]</a>
 		    
 			<a th:href="@{/imoveis}" class="btn btn-primary btn-sm p-5 m-3" >Listar Imoveis</a>			

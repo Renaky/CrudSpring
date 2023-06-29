@@ -20,13 +20,13 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@GetMapping("/users")
+	@GetMapping("/listar_proprietario")
 	public String usuarios(Model model) {
 		
 		
 		List<User> users = userRepository.findAll();
 		model.addAttribute("users", users);
-		return "index";
+		return "listar_proprietario";
 	}
 	
 	@GetMapping("/users/form")
@@ -40,7 +40,7 @@ public class UserController {
 		
 		userRepository.save(user);
 		
-		return "redirect:/users";
+		return "redirect:/listar_proprietario";
 	}
 	
 	@GetMapping("/users/update/{id}")
@@ -70,7 +70,7 @@ public class UserController {
 		
 		userRepository.delete(user);
 		
-		return "redirect:/users";
+		return "redirect:/listar_proprietario";
 		
 		
 	}
