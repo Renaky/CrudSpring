@@ -22,23 +22,23 @@
 			<span th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="text-danger"></span>
 			<input type="text" th:field="*{color}" placeholder="Cor" class="form-control mb-4 col-4">
 
-			<!-- User Select -->
-			<select name="owner">
-			    <option value="">Selecione Proprietário</option>
-			    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
-			</select>
+		
 			
-			<!-- Occupant Select -->
-			<select name="inquilinos">
-			    <option value="">Selecione Inquilino</option>
-			    <option th:each="inquilino : ${inquilinos}" th:value="${inquilinos.id}" th:text="${inquilinos.name}"></option>
-			</select>
+			<select th:field="*{occupant}" class="form-select mb-4 col-4">
+				<option value="">Selecione Inquilino</option>
+                <option th:each="occupant : ${occupants}" th:value="${occupant.id}" th:text="${occupant.name}"></option>
+            </select>
+			
+			<select th:field="*{owner}" class="form-select mb-4 col-4">
+				<option value="">Selecione Proprietário</option>
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+            </select>
 
-			<!-- Address Select -->
-			<select name="address">
-			    <option value="">Selecione o Endereço</option>
-			    <option th:each="address : ${addresses}" th:value="${address.id}" th:text="${address.place}"></option>
-			</select>
+			<select th:field="*{address}" class="form-select mb-4 col-4">
+				<option value="">Selecione o Endereco</option>
+                <option th:each="address : ${addresses}" th:value="${address.id}" th:text="${address.place  + ', n: ' + address.number + ', CEP: ' + address.zipCode}"></option>
+            </select>
+            
 			
 			
 			

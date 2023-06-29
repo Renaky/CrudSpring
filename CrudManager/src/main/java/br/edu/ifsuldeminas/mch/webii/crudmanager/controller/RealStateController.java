@@ -45,11 +45,6 @@ public class RealStateController {
 		return "listar_imoveis";
 	}
 	
-	@GetMapping("/imoveis/form")
-	public String imovelForm(@ModelAttribute("imoveis") RealState rs) {
-		
-		return "imovel_form";
-	}
 	
 	@PostMapping("/imoveis/new")
 	public String imovelNew(@ModelAttribute("imoveis") RealState rs) {
@@ -91,8 +86,9 @@ public class RealStateController {
 		
 	}
 	
-	@GetMapping("/imovel-form")
-	public String showImovelForm(Model model) {
+	
+	@GetMapping("/imoveis/form")
+	public String imovelForm(@ModelAttribute("imoveis") RealState rs, Model model) {
 	    List<User> users = userRepository.findAll();
 	    List<Occupant> occupants = occupantRepository.findAll();
 	    List<Address> addresses = addressRepository.findAll();
@@ -103,6 +99,7 @@ public class RealStateController {
 
 	    return "imovel_form";
 	}
+
 
 	
 	
