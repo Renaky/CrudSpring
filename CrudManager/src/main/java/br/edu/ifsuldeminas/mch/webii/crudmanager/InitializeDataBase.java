@@ -76,7 +76,25 @@ public class InitializeDataBase implements CommandLineRunner{
 		ruab.setPlace("Rua Barão Vermelho");
 		ruab.setZipCode("3478-014");
 		
+		Address ruac = new Address();
+		ruac.setNumber(124);
+		ruac.setPlace("Rua Distrito 13");
+		ruac.setZipCode("3478-014");
+		
+		Address ruad = new Address();
+		ruad.setNumber(148);
+		ruad.setPlace("Rua Milesimo Imperial");
+		ruad.setZipCode("3478-014");
+		
+		Address ruae = new Address();
+		ruae.setNumber(456);
+		ruae.setPlace("Rua João Candido");
+		ruae.setZipCode("3478-014");
+		
 		addressRepository.save(ruab);
+		addressRepository.save(ruac);
+		addressRepository.save(ruad);
+		addressRepository.save(ruae);
 		addressRepository.flush();
 		
 		//imobiliaria criando casa

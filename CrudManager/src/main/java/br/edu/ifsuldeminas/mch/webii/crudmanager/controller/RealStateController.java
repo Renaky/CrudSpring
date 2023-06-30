@@ -57,16 +57,25 @@ public class RealStateController {
 	@GetMapping("/imoveis/update/{id}")
 	public String imovelUpdate(@PathVariable("id")Integer id, Model model) {
 		
-		Optional<RealState> optRs = realStateRepository.findById(id);
-		if(optRs.isPresent()) {
-			//gerar erro
-		}
-		
-		RealState rs = optRs.get();
-		
-		model.addAttribute("imoveis", rs);
-		
-		return "imovel_form";
+
+	    Optional<RealState> optRs = realStateRepository.findById(id);
+	    if (optRs.isPresent()) {
+	        RealState rs = optRs.get();
+	        model.addAttribute("imoveis", rs);
+	    } else {
+	        // Tratar o caso em que o RealState não é encontrado
+	    }
+
+	    List<Address> addresses = addressRepository.findAll();
+	    model.addAttribute("addresses", addresses);
+
+	    List<Occupant> occupants = occupantRepository.findAll();
+	    model.addAttribute("occupants", occupants);
+
+	    List<User> users = userRepository.findAll();
+	    model.addAttribute("users", users);
+
+	    return "imovel_form";
 	}
 	
 	@GetMapping("/imoveis/delete/{id}")

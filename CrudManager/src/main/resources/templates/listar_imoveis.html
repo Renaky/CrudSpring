@@ -37,7 +37,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Usuário</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Proprieterário</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
               <li><a class="dropdown-item" th:href="@{/users}">Listar Proprietários</a></li>
               <li><a class="dropdown-item" th:href="@{/users/form}">Adicionar Proprietário</a></li>
@@ -86,9 +86,9 @@
                         <td th:text="${imovel.color}"></td>
                         <td th:text="${imovel.occupant.name}"></td>
                         <td th:text="${imovel.owner.name}"></td>
-                         <td th:text="${imovel.address.place  + ', n: ' + imovel.address.number + ', CEP: ' + imovel.address.zipCode}"></td>
+                         <td th:text="${imovel.address.place  + ', N°: ' + imovel.address.number + ', CEP: ' + imovel.address.zipCode}"></td>
                         <td>
-                            <a th:href="@{/imoveis/{id}(id=${imovel.id})}"
+                            <a th:href="@{/imoveis/update/{id}(id=${imovel.id})}"
                             class="btn btn-primary btn-sm mb-3">Alterar</a>
                             
                             <a th:href="@{/imoveis/delete/{id}(id=${imovel.id})}"
