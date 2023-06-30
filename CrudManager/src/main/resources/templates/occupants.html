@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="UTF-8" />
 		<link rel="stylesheet"
@@ -9,9 +9,9 @@
 			
 		 <link rel="stylesheet" 
 		       href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		       <title>Listar Imoveis</title>
+		       <title>Owner</title>
 		
-		<script src="https://code.jquery.com/jquery-3.5.1.js" 
+		<script src="https://code.jquery.com/jquery-3.5.1.js"
 		        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 		        crossorigin="anonymous">
 		</script>
@@ -22,9 +22,9 @@
 		</script>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
-	
-</head>
-<body>
+  <body>
+    
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
     <div class="container">
@@ -35,14 +35,15 @@
 
       <div class="collapse navbar-collapse" id="navbarsExample07">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Proprieterário</a>
+        
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Proprietario</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
               <li><a class="dropdown-item" th:href="@{/listar_proprietario}">Listar Proprietários</a></li>
               <li><a class="dropdown-item" th:href="@{/users/form}">Adicionar Proprietário</a></li>
             </ul>
           </li>
+          
           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Imoveis</a>
@@ -52,53 +53,49 @@
             </ul>
           </li>
           
-          <li class="nav-item dropdown">
+           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Inquilinos</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
               <li><a class="dropdown-item" th:href="@{/occupants}">Listar Inquilinos</a></li>
-              <li><a class="dropdown-item" th:href="@{/occupants/form}">Adicionar Inquilinos</a></li>
+              <li><a class="dropdown-item" th:href="@{/occupants/form}">Adicionar Inquilino</a></li>
             </ul>
           </li>
-          
           
         </ul>
       </div>
     </div>
   </nav>
-  
-  
-        <div class="container my-2">
-            <h1>Imoveis</h1>
-            <table class="table table-striped table-responsive-md">
-                <thead>
-                    <tr>
-                    	<th>Tamanho M²</th>
-                        <th>Cor</th>
-                        <th>Inquilino</th>
-                        <th>Proprietario</th>
-                        <th>Endereço</th>
-                        <th>Ações</th>
+		<div class="container my-2">
+			<h1>Inquilinos</h1>
+			<table class="table table-striped table-responsive-md">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Gênero</th>
+						<th>Telefone</th>
+						<th>Ações</th>
 					</tr>
-                </thead>
-                <tbody>
-                    <tr th:each="imovel : ${imoveis}">
-                    	<td th:text="${imovel.size}"></td>
-                        <td th:text="${imovel.color}"></td>
-                        <td th:text="${imovel.occupant.name}"></td>
-                        <td th:text="${imovel.owner.name}"></td>
-                         <td th:text="${imovel.address.place  + ', N°: ' + imovel.address.number + ', CEP: ' + imovel.address.zipCode}"></td>
-                        <td>
-                            <a th:href="@{/imoveis/update/{id}(id=${imovel.id})}"
-                            class="btn btn-primary btn-sm mb-3">Alterar</a>
-                            
-                            <a th:href="@{/imoveis/delete/{id}(id=${imovel.id})}"
-                            class="btn btn-danger btn-sm mb-3">Deletar</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <a th:href="@{/imoveis/form}"
-               class="btn btn-primary btn-sm mb-3">Adicionar Imoveis</a>
-        </div>
-</body>
+				</thead>
+				<tbody>
+					<tr th:each="occupant : ${occupants}">
+						<td th:text="${occupant.name}"></td>
+						<td th:text="${occupant.email}"></td>						
+						<td th:text="${occupant.gender}"></td>
+						<td th:text="${occupant.tel}"></td>
+						
+						<td>
+							<a th:href="@{/occupants/update/{id}(id=${occupant.id})}"
+							class="btn btn-primary btn-sm mb-3">Alterar</a>
+							
+							<a th:href="@{/occupants/delete/{id}(id=${occupant.id})}"
+							class="btn btn-danger btn-sm mb-3">Deletar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/occupants/form}" 
+			   class="btn btn-primary btn-sm mb-3">Adicionar Proprietario</a>
+		</div>
+	</body>
 </html>

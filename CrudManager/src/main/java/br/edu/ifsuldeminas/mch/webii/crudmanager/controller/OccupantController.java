@@ -26,13 +26,13 @@ public class OccupantController {
 		
 		List<Occupant> occupants = occupantRepository.findAll();
 		model.addAttribute("occupants", occupants);
-		return "index";
+		return "occupants";
 	}
 	
 	@GetMapping("/occupants/form")
 	public String occupantForm(@ModelAttribute("occupant") Occupant occupant) {
 		
-		return "occupant_form";
+		return "occupants_form";
 	}
 	
 	@PostMapping("/occupants/new")
@@ -55,7 +55,7 @@ public class OccupantController {
 		
 		model.addAttribute("occupant", occupant);
 		
-		return "occupant_form";
+		return "occupants_form";
 	}
 	
 	@GetMapping("/occupants/delete/{id}")
