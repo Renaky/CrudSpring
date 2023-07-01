@@ -3,9 +3,12 @@ package br.edu.ifsuldeminas.mch.webii.crudmanager.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,8 +50,11 @@ public class RealStateController {
 	
 	
 	@PostMapping("/imoveis/new")
-	public String imovelNew(@ModelAttribute("imoveis") RealState rs) {
+	public String imovelNew(@Valid @ModelAttribute("imoveis") RealState rs, BindingResult br) {
 		
+		if(br.hasErrors()) {
+			return "imovel_form";
+		}
 		realStateRepository.save(rs);
 		
 		return "redirect:/imoveis";

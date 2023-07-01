@@ -10,20 +10,23 @@
 
 <body>
 	<div class="container my-2">
-		<h2>Usuário</h2>
+		<h2>Proprietário</h2>
 		<form action="#" th:action="@{/users/new}" th:object="${user}" method="POST">
 			<input th:field="*{id}" type="hidden" id="id">
 			
+			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
 			<input type="text" th:field="*{name}" placeholder="Nome" class="form-control mb-4 col-4"> 
 			
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
 			<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
 			
+			<span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger"></span>
 			<input type="text" th:field="*{gender}" placeholder="Gênero" class="form-control mb-4 col-4">
 			
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
 		</form>
 		<hr>
-		<a th:href="@{/users}">Usuários</a>
+		<a th:href="@{/users}">Proprietário</a>
 	</div>
 </body>
 </html>
